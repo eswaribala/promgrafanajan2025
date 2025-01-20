@@ -10,6 +10,10 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 choco install kubernetes-helm
 
+or
+Download helm
+
+https://github.com/helm/helm/releases
 
 #Check helm version
 
