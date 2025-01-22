@@ -133,6 +133,25 @@ kubectl port-forward -n prometheus svc/<node exporter service name> 9100:9100
 
 helm upgrade prometheus prometheus-community/prometheus -f values.yaml -n prometheus
 
+#windows exporter
+#download exe file
+https://github.com/prometheus-community/windows_exporter/releases
+#access metrics from
+http://localhost:9182/metrics
+
+#modify values.yaml for windows exporter
+- job_name: 'windowsexporter'
+        metrics_path: '/metrics'
+        static_configs:
+          - targets: ['ipaddress:9182']
+
+#after save changes, run the following 
+
+helm upgrade prometheus prometheus-community/prometheus -f values.yaml -n prometheus
+
+
+
+
 #alert manager to run
 kubectl get svc -n prometheus
 kubectl port-forward -n prometheus svc/<alertmanagerservicename> 9093:9093
