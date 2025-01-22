@@ -134,8 +134,9 @@ kubectl port-forward -n prometheus svc/<node exporter service name> 9100:9100
 helm upgrade prometheus prometheus-community/prometheus -f values.yaml -n prometheus
 
 #windows exporter
-#download exe file
+#download windows amd exe file
 https://github.com/prometheus-community/windows_exporter/releases
+#execute exe file by clicking on more info and run anyway
 #access metrics from
 http://localhost:9182/metrics
 
