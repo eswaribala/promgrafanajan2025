@@ -124,6 +124,15 @@ kubectl get svc -n prometheus
 
 kubectl port-forward -n prometheus svc/<node exporter service name> 9100:9100
 
+#add node exporter job to prometheus
+- job_name: 'node_exporter'
+        static_configs:
+          - targets: ['prometheus-prometheus-node-exporter:9100']
+
+#after save changes, run the following 
+
+helm upgrade prometheus prometheus-community/prometheus -f values.yaml -n prometheus
+
 #alert manager to run
 kubectl get svc -n prometheus
 kubectl port-forward -n prometheus svc/<alertmanagerservicename> 9093:9093
