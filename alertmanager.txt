@@ -1,0 +1,56 @@
+alertmanager:
+  ## If false, alertmanager will not be installed
+  ##
+  enabled: true
+  config:
+   global:
+     resolve_timeout: 5m
+   route:
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      receiver: 'web-hook'   # default receiver
+      
+   receivers:
+      - name: 'email-alerts'
+        email_configs:
+          - to: 'alerts@example.com'
+            from: 'alertmanager@example.com'
+            smarthost: 'smtp.example.com:587'
+            auth_username: 'smtp-user'
+            auth_password: 'smtp-password'
+      - name: 'web-hook'
+        webhook_configs:
+            - url: 'http://host.docker.internal:4000/webhook'
+
+
+
+
+
+
+
+----------------------------------------------------
+alertmanagerFiles:
+  alertmanager.yml: |
+    alertmanager:
+  config:
+    global:
+      resolve_timeout: 5m
+    route:
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      receiver: 'web-hook'   # default receiver
+    receivers:
+      - name: 'email-alerts'
+        email_configs:
+          - to: 'alerts@example.com'
+            from: 'alertmanager@example.com'
+            smarthost: 'smtp.example.com:587'
+            auth_username: 'smtp-user'
+            auth_password: 'smtp-password'
+      - name: 'web-hook'
+        webhook_configs:
+            - url: 'http://host.docker.internal:4000/webhook'
