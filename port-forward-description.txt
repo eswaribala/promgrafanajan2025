@@ -19,7 +19,7 @@
 
 
 7. Grafana 3000
-#kubectl port-forward svc/mygrafana  3000:80
+#kubectl port-forward svc/my-grafana  3000:80
 
 8. Windows Exporter 9182
 
