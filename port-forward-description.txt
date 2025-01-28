@@ -19,6 +19,11 @@
 
 
 7. Grafana 3000
+
+#scale the pods in case speed is lagging
+
+kubectl scale --replicas=2 deployment my-grafana
+
 #kubectl port-forward svc/my-grafana  3000:80
 
 8. Windows Exporter 9182
