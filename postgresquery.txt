@@ -1,0 +1,1 @@
+SELECT account_no, contact_no FROM customer where first_name='$username';
